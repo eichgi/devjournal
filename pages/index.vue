@@ -45,7 +45,7 @@
             </div>
           </div>
         </header>-->
-        <nav class="navbar is-dark">
+        <!--<nav class="navbar is-dark">
           <div class="navbar-brand">
             <nuxt-link to="/" class="navbar-item has-text-weight-bold pl-1 pr-1">Dev Journal</nuxt-link>
             <div :class="[menuVisible ? 'is-active' : '', 'navbar-burger', 'burger']"
@@ -62,7 +62,8 @@
               <nuxt-link to="/posts" class="navbar-item">Entradas</nuxt-link>
             </div>
           </div>
-        </nav>
+        </nav>-->
+        <navbar></navbar>
       </div>
 
       <!-- Hero content: will be in the middle -->
@@ -100,7 +101,8 @@
         </nav>-->
         <footer class="footer">
           <div class="content has-text-centered">
-            <p class="has-text-weight-bold is-size-5">The Journal por <a href="https://eichgi.com">Hiram Guerrero</a></p>
+            <p class="has-text-weight-bold is-size-5">The Journal por <a href="https://eichgi.com">Hiram Guerrero</a>
+            </p>
           </div>
         </footer>
       </div>
@@ -131,7 +133,7 @@
         this.menuVisible = !this.menuVisible;
       },
       getPosts() {
-        this.$axios.$get('http://cockpit.test/api/collections/get/publicaciones?token=28a638a24274c9123f3238f905a377')
+        this.$axios.$get(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`)
           .then(res => {
             this.posts = res.entries;
             console.log(res);

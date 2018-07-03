@@ -1,4 +1,4 @@
-# journal
+# Dev Journal
 
 > A blog for developers
 

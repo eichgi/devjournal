@@ -180,7 +180,7 @@
           //populate: 3
         };
 
-        this.$axios.$post('http://cockpit.test/api/collections/get/publicaciones?token=28a638a24274c9123f3238f905a377', filtered)
+        this.$axios.$post(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`, filtered)
           .then(res => {
             this.entry = res.entries[0];
             console.log(res);
