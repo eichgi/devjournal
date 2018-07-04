@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar is-dark">
     <div class="navbar-brand">
-      <nuxt-link to="/" class="navbar-item has-text-weight-bold pl-1 pr-1">Dev Journal</nuxt-link>
+      <nuxt-link to="/" class="navbar-item has-text-weight-bold pl-1 pr-1">Inicio</nuxt-link>
       <div :class="[menuVisible ? 'is-active' : '', 'navbar-burger', 'burger']" data-target="navMenuColordark-example"
            @click="burguerMenu">
         <span></span>
@@ -12,7 +12,7 @@
     <div id="navMenuColordark-example" :class="[menuVisible ? 'is-active' : '', 'navbar-menu']">
       <div class="navbar-start"></div>
       <div class="navbar-end">
-        <nuxt-link to="/posts" class="navbar-item is-active">Entradas</nuxt-link>
+        <nuxt-link to="/acerca" class="navbar-item is-active">Acerca</nuxt-link>
       </div>
     </div>
   </nav>

@@ -1,3 +1,5 @@
+$primary-color: #AA3939;
+
 body {
   /*max-width: 960px;*/
   background: url("/assets/images/backgroundish.jpg");
@@ -18,11 +20,11 @@ body {
 }
 
 .primary-color {
-  color: #AA3939 !important;
+  color: $primary-color !important;
 }
 
 .primary-background {
-  background: #AA3939 !important;
+  background: $primary-color !important;
 }
 
 footer {
@@ -35,12 +37,16 @@ footer {
   }
 
   a:hover {
-    color: #AA3939;
+    color: $primary-color;
   }
 }
 
 .max-width-100 {
   max-width: 100% !important;
+}
+
+.red-hover:hover {
+  color: $primary-color;
 }
 
 $spaceamounts: (1, 2, 3, 4, 5); // Adjust this to include the pixel amounts you need.

@@ -3,66 +3,6 @@
     <section class="hero is-fullheight">
       <!-- Hero head: will stick at the top -->
       <div class="hero-head">
-        <!--<header class="navbar">
-          <div class="navbar-start">
-            <nuxt-link to="/" class="navbar-item has-text-weight-bold pl-1 pr-1">The Journal</nuxt-link>
-            &lt;!&ndash;<div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="/documentation/overview/start/">
-                Docs
-              </a>
-              <div class="navbar-dropdown">
-                <a class="navbar-item" href="/documentation/overview/start/">
-                  Overview
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/modifiers/syntax/">
-                  Modifiers
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/columns/basics/">
-                  Columns
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/layout/container/">
-                  Layout
-                </a>
-                <a class="navbar-item" href="https://bulma.io/documentation/form/general/">
-                  Form
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item" href="https://bulma.io/documentation/elements/box/">
-                  Elements
-                </a>
-                <a class="navbar-item is-active" href="https://bulma.io/documentation/components/breadcrumb/">
-                  Components
-                </a>
-              </div>
-            </div>&ndash;&gt;
-          </div>
-          <div id="navbarMenuHeroC" class="navbar-menu">
-            <div class="navbar-end">
-              &lt;!&ndash;<a href="/posts" class="navbar-item is-active">
-                Entradas
-              </a>&ndash;&gt;
-              <nuxt-link to="/posts" class="navbar-item is-active">Entradas</nuxt-link>
-            </div>
-          </div>
-        </header>-->
-        <!--<nav class="navbar is-dark">
-          <div class="navbar-brand">
-            <nuxt-link to="/" class="navbar-item has-text-weight-bold pl-1 pr-1">Dev Journal</nuxt-link>
-            <div :class="[menuVisible ? 'is-active' : '', 'navbar-burger', 'burger']"
-                 data-target="navMenuColordark-example"
-                 @click="burguerMenu">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-          <div id="navMenuColordark-example" :class="[menuVisible ? 'is-active' : '', 'navbar-menu']">
-            <div class="navbar-start"></div>
-            <div class="navbar-end">
-              <nuxt-link to="/posts" class="navbar-item">Entradas</nuxt-link>
-            </div>
-          </div>
-        </nav>-->
         <navbar></navbar>
       </div>
 
@@ -79,7 +19,8 @@
                 </nuxt-link>
               </p>
               <p class="subtitle is-6 primary-color">@{{post.author}}</p>
-              <p>{{postExcerpt(post.content, 200)}}</p>
+              <!--p>{{postExcerpt(post.content, 200)}}</p>-->
+              <p v-html="postExcerpt(post.content, 250)"></p>
             </li>
           </ul>
         </div>
@@ -87,24 +28,7 @@
 
       <!-- Hero footer: will stick at the bottom -->
       <div class="hero-foot">
-        <!--<nav class="tabs is-boxed is-fullwidth">
-          <div class="container">
-            <ul>
-              <li class="is-active"><a>Overview</a></li>
-              <li><a>Modifiers</a></li>
-              <li><a>Grid</a></li>
-              <li><a>Elements</a></li>
-              <li><a>Components</a></li>
-              <li><a>Layout</a></li>
-            </ul>
-          </div>
-        </nav>-->
-        <footer class="footer">
-          <div class="content has-text-centered">
-            <p class="has-text-weight-bold is-size-5">The Journal por <a href="https://eichgi.com">Hiram Guerrero</a>
-            </p>
-          </div>
-        </footer>
+        <main-footer></main-footer>
       </div>
     </section>
   </div>
@@ -112,6 +36,7 @@
 
 <script>
   import navbar from '~/components/navbar.vue'
+  import footer from '~/components/footer.vue'
 
   export default {
     name: "index",
@@ -120,6 +45,7 @@
     },
     components: {
       navbar,
+      'main-footer': footer,
     },
     data() {
       return {
@@ -139,7 +65,8 @@
             console.log(res);
           });
       },
-      postExcerpt: function (content, length = 150) {
+      postExcerpt(content, length = 150) {
+        //content = content.replace(/<(?:.|\n)*?>/gm, '');
         return content ? `${content.substr(0, length)}...` : '';
       },
     },

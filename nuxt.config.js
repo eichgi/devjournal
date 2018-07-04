@@ -3,7 +3,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'The Journal',
+    title: 'Dev Journal',
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1'},
@@ -16,7 +16,10 @@ module.exports = {
   /*
   ** Customize the progress bar color
   */
-  loading: {color: '#3B8070'},
+  loading: {
+    color: '#AA3939',
+    height: '5px',
+  },
   /*
   ** Global CSS
   */
@@ -29,10 +32,12 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-    // Doc: https://github.com/nuxt-community/axios-module#usage
     '@nuxtjs/axios',
     '@nuxtjs/moment',
     '@nuxtjs/dotenv',
+    ['@nuxtjs/google-analytics', {
+      id: 'UA-121810463-1'
+    }],
   ],
   /*
   ** Build configuration
