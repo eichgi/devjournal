@@ -59,7 +59,12 @@
         this.menuVisible = !this.menuVisible;
       },
       getPosts() {
-        this.$axios.$get(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`)
+        let filters = {
+          sort: {_created: -1},
+          limit: 5,
+          skip: 0,
+        };
+        this.$axios.$post(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`, filters)
           .then(res => {
             this.posts = res.entries;
             console.log(res);
