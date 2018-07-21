@@ -19,10 +19,15 @@
                 </nuxt-link>
               </p>
               <p class="subtitle is-6 primary-color">@{{post.author}}</p>
-              <!--p>{{postExcerpt(post.content, 200)}}</p>-->
               <p v-html="postExcerpt(post.content, 250)"></p>
             </li>
           </ul>
+          <button class="button primary-background has-text-white m-t-2" @click="getPosts()" v-show="filters.skip > 0">
+            Últimas
+          </button>
+          <button class="button primary-background has-text-white m-t-2" @click="getPosts(filters.skip+5)">
+            Entradas anteriores
+          </button>
         </div>
       </div>
 
@@ -51,6 +56,11 @@
       return {
         menuVisible: false,
         posts: [],
+        filters: {
+          sort: {_created: -1},
+          limit: 5,
+          skip: 0,
+        }
       }
     },
     computed: {},
@@ -58,20 +68,19 @@
       burguerMenu() {
         this.menuVisible = !this.menuVisible;
       },
-      getPosts() {
-        let filters = {
-          sort: {_created: -1},
-          limit: 5,
-          skip: 0,
-        };
-        this.$axios.$post(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`, filters)
+      getPosts(skip = 0) {
+        this.filters.skip = skip;
+        this.$axios.$post(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`, this.filters)
           .then(res => {
-            this.posts = res.entries;
             console.log(res);
+            if (res.entries.length) {
+              this.posts = res.entries;
+            } else {
+              this.filters.skip -= 5;
+            }
           });
       },
       postExcerpt(content, length = 150) {
-        //content = content.replace(/<(?:.|\n)*?>/gm, '');
         return content ? `${content.substr(0, length)}...` : '';
       },
     },
