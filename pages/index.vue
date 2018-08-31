@@ -13,12 +13,13 @@
           <h2 class="subtitle primary-color">Un blog para desarrolladores</h2>
           <ul class="posts-list has-text-left">
             <li class="posts-item" v-for="(post, index) in posts" :key="index">
-              <p>
+              <p class="post-title">
                 <nuxt-link :to="{ name: 'entradas-id', params: { id: post._id}}" class="title is-4">
                   {{post.title}}
                 </nuxt-link>
               </p>
-              <p class="subtitle is-6 primary-color">@{{post.author}}</p>
+              <br>
+              <!--<p class="subtitle is-6 primary-color">@{{post.author}}</p>-->
               <p v-html="postExcerpt(post.content, 250)"></p>
             </li>
           </ul>
@@ -104,5 +105,13 @@
     margin-left: 1em;
     padding: 1em 0;
     border-bottom: 1px solid #DDD;
+  }
+
+  .post-title:hover {
+    text-decoration: underline;
+  }
+
+  .post-title:hover > a {
+    color: #AA3939;
   }
 </style>
