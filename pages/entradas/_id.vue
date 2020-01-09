@@ -176,7 +176,6 @@
         this.$axios.$post(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`, filtered)
           .then(res => {
             this.entry = res.entries[0];
-            console.log(res);
           });
       },
       reformatTime(timestamp) {

@@ -56,7 +56,6 @@
         this.$axios.$get(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`)
           .then(res => {
             this.posts = res.entries;
-            console.log(res);
           });
       },
       postExcerpt: function (content, length = 150) {

@@ -73,7 +73,6 @@
         this.filters.skip = skip;
         this.$axios.$post(`${process.env.SERVER}/api/collections/get/publicaciones?token=${process.env.TOKEN}`, this.filters)
           .then(res => {
-            console.log(res);
             if (res.entries.length) {
               this.posts = res.entries;
             } else {
